@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Product Filtering</title>
+</head>
+<body class="bg-gray-700 text-white">
+    <nav class="bg-gray-900 p-4 mb-6">
+        <div class="container max-w-6xl mx-auto flex flex-col sm:flex-row gap-8 items-center">
+            
+            <!--Search area-->
+            <div class="relative w-full">
+                <i class="absolute left-3  top-3 fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="search" class="bg-gray-700 rounded-full p-2 pl-10 transition focus:w-full cursor-pointer" placeholder="Search products...">                
+            </div>
+            <!---->
+
+            <!--Cart button-->
+            <button id="cartButton" class="realtive">
+                <i class="fa-solid fa-bag-shopping" style="color: #ffffff;"></i>
+                <small id="cartCount" class="bg-red-500 text-xs text-white w-4 h-4 absolute rounded-full top-5 -right-55">0</small>
+            </button>
+            <!---->
+
+        </div>
+    </nav>
+
+    <main class="flex flex-col md:flex-row container mx-auto max-w-6xl">
+        <div class="space-y-4 p-2 w-full md:max-w-[10rem]">
+            <h2 class="text-2xl">Filters</h2>
+            <h3 class="text-xl mb-2">Categories</h3>
+
+            <!--Sidebar-->
+            <div id="filters-container" class="text-xl space-y-2">
+                <input type="checkbox" class="check" id="cameras">
+                <label for="cameras">Cameras</label>
+            </div>
+            <div id="filters-container" class="text-xl space-y-2">
+                <input type="checkbox" class="check" id="smartphones">
+                <label for="smartphones">Smartphones</label>
+            </div>
+            <div id="filters-container" class="text-xl space-y-2">
+                <input type="checkbox" class="check" id="games">
+                <label for="games">Games</label>
+            </div>
+            <div id="filters-container" class="text-xl space-y-2">
+                <input type="checkbox" class="check" id="televisions">
+                <label for="televisions">Televisions</label>
+            </div>
+            <!---->
+
+        </div>
+
+        <!--Products-->
+        <div id="products-wrapper" class="w-full max-w-4xl mx-auto grid grid-cols-2 gap-6 place-content-center p-4 sm:grid-cols-3 xl:grid-cols-4">
+
+            <div class="item space-y-2">
+                <div class="bg-gray-100 flex justify-center relative overflow-hidden group cursor-pointer border">
+                    <img src="/images/playstation_5.png" alt="playstation 5" class="w-full h-full object-cover"/>
+                    <span class="status bg-black text-white absolute bottom-0 left-0 right-0 text-center py-2 translate-y-full transition group-hover:translate-y-0">Add to cart</span>
+                </div>
+                <p class="text-xl">Playstation 5</p>
+                <strong>$399</strong>
+            </div>
+
+            <div class="item space-y-2">
+                <div class="bg-gray-100 flex justify-center relative overflow-hidden group cursor-pointer border">
+                    <img src="/images/google_pixel.png" alt="google pixel smartphone" class="w-full h-full object-cover"/>
+                    <span class="status bg-black text-white absolute bottom-0 left-0 right-0 text-center py-2 translate-y-full transition group-hover:translate-y-0">Add to cart</span>
+                </div>
+                <p class="text-xl">Google Pixel</p>
+                <strong>$899</strong>
+            </div>
+
+            <div class="item space-y-2">
+                <div class="bg-gray-100 flex justify-center relative overflow-hidden group cursor-pointer border">
+                    <img src="/images/lg_tv.png" alt="lg television" class="w-full h-full object-cover"/>
+                    <span class="status bg-black text-white absolute bottom-0 left-0 right-0 text-center py-2 translate-y-full transition group-hover:translate-y-0">Add to cart</span>
+                </div>
+                <p class="text-xl">LG TV</p>
+                <strong>$279</strong>
+            </div>
+
+            <div class="item space-y-2">
+                <div class="bg-gray-100 flex justify-center relative overflow-hidden group cursor-pointer border">
+                    <img src="/images/cannon_eos_camera.png" alt="cannon eos camera" class="w-full h-full object-cover"/>
+                    <span class="status bg-black text-white absolute bottom-0 left-0 right-0 text-center py-2 translate-y-full transition group-hover:translate-y-0">Add to cart</span>
+                </div>
+                <p class="text-xl">Cannon EOS Camera</p>
+                <strong>$499</strong>
+            </div>
+
+        </div>
+        <!---->
+
+    </main>
+
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/97085a24ff.js" crossorigin="anonymous"></script>
+</body>
+</html>
