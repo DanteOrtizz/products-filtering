@@ -73,7 +73,7 @@ const products = [
     },
 ];
   
-// Get DOM elements
+// Get DOM elements -------------------------------------------------------------
 const productsWrapperEl = document.getElementById('products-wrapper');
 const checkEls = document.querySelectorAll('.check');
 const filtersContainer = document.getElementById('filters-container');
@@ -81,19 +81,25 @@ const searchInput = document.getElementById('search');
 const cartButton = document.getElementById('cartButton');
 const cartCount = document.getElementById('cartCount');
 
-// Initialize cart item count
+// Initialize cart item count ----------------------------------------------------
 let cartItemCount = 0;
 
-// Initialize products
+// Initialize products ----------------------------------------------------------
 const productsEls = [];
 
-// Loop over the products and create the product elements
+// Loop over the products and create the product elements ------------------------
 products.forEach((product) => {
     const productEl = createProductElement(product);
     productsEls.push(productEl);
     productsWrapperEl.appendChild(productEl);
-  });
+  }
+);
 
+// Add filter event listeners ----------------------------------------------
+filtersContainer.addEventListener('change', filterProducts);
+searchInput.addEventListener('input', filterProducts);
+
+// create product function ----------------------------------------------
 function createProductElement(product) {
     const productEl = document.createElement('div');
   
@@ -120,7 +126,7 @@ function createProductElement(product) {
     return productEl;
 }
 
-// Toggle add/remove from cart
+// Toggle add/remove from cart -----------------------------------------------------------------
 function addToCart(e) {
     const statusEl = e.target;
 
@@ -145,4 +151,29 @@ function addToCart(e) {
 
     // update cart item count
     cartCount.innerText = cartItemCount.toString();
+}
+
+// filter product by search or checkbox -----------------------------------------------
+function filterProducts() {
+  // get search term
+  const searchTerm = searchInput.value.trim().toLowerCase();
+
+  // get checked categories
+  const checkedCategories = Array.from(checkEls).filter((check) => check.checked).map((check) => check.id);
+
+    // loop over products and check for matches
+    productsEls.forEach((productEl, index) => {
+      const product = products[index];
+
+      // product search validation
+      const matchesSearcheTerm = product.name.toLowerCase().includes(searchTerm);
+      const isInCheckedCategory = checkedCategories.length === 0 || checkedCategories.includes(product.type);
+
+      // show or hide products
+      if (matchesSearcheTerm && isInCheckedCategory) {
+        productEl.classList.remove('hidden');
+      } else {
+        productEl.classList.add('hidden');
+      }
+    });
 }
